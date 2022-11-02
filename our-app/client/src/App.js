@@ -5,9 +5,10 @@ import {
   Routes,
   Switch,
 } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar.js";
+import Navbar from "./components/Navbar/Navbar";
 import Tests from "./Pages/Tests/Tests";
 import EditingQuestions from "./Pages/EditingQuestions/EditingQuestions";
+import ConductingTest from "./Pages/ConductingTest/ConductingTest";
 function App() {
 
   const masectot = ["שבת", "ברכות", "ראש השנה"];
@@ -18,6 +19,8 @@ function App() {
   const perek = prakim.map((el) => ({ value: el, label: el }));
   const dapim = ["ב", "ג", "ד"];
   const daf = dapim.map((el) => ({ value: el, label: el }));
+const agdarot=["רגיל","הבנה","בהירות","סיכום"];
+const agdara= agdarot.map((el) => ({ value: el, label: el }));
 
   const categories = [
     {
@@ -33,6 +36,10 @@ function App() {
       label: "דף",
       select: daf,
     },
+    {
+      label:"הגדרה",
+      select: agdara
+    }
   ];
   return (
     <>
@@ -41,6 +48,8 @@ function App() {
         <Routes>
         <Route path="/מבחנים" element={<Tests/>} /> 
         <Route path="/מבחנים/עריכת שאלות" element={<EditingQuestions categories={categories}/>} /> 
+        <Route path="/מבחנים/עריכת מבחן" element={<ConductingTest />} /> 
+
 
         </Routes>
       </BrowserRouter>    </>
